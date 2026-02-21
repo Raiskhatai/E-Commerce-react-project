@@ -6,7 +6,10 @@ clerk.com ki website par jakar hume login karna hey or free mey backend ka login
 
 # 2:- fetching live location
 
-we use navigator.geolocation.getCurrentPosition(async function(){}):
+we use
+
+:- navigator.geolocation.getCurrentPosition(async function(){}):
+
 navigator.geolocatino.getCurrentPosition hume latitude and longitude deta hey usko hum nominate api se live location mey convert karte hey.
 
 this is nominatim api isme humne lat=${latitude diya} or lon=${longitude} diye is url ko axios ka use karke iske value ko useState hook mey set kar diya

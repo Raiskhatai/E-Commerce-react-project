@@ -1,10 +1,10 @@
 import { Route, Routes } from "react-router-dom";
-import Home from "./Components/Pages/home";
-import AboutUs from "./Components/Pages/aboutUs";
-import Contact from "./Components/Pages/contact";
+import Home from "./Pages/home";
+import AboutUs from "./Pages/aboutUs";
+import Contact from "./Pages/contact";
 import Navbar from "./Components/Navbar/Navbar";
-import Product from "./Components/Pages/product";
-import Cart from "./Components/Pages/cart";
+import Product from "./Pages/product";
+import Cart from "./Pages/cart";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -29,6 +29,7 @@ const App = () => {
 
   useEffect(() => {
     // getLocation();
+
   }, []);
 
   return (
