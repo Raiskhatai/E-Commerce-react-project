@@ -1,11 +1,14 @@
-import React from 'react'
+import React from "react";
+import AllProducts from "../Components/AllProducts";
+import Cateogery from "../Components/Cateogery";
 
 const Product = () => {
   return (
-    <div>
-      product
+    <div className="grid grid-cols-4">
+      <Cateogery />
+      <AllProducts />
     </div>
-  )
-}
+  );
+};
 
-export default Product
+export default Product;

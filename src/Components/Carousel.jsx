@@ -14,7 +14,11 @@ const Carousel = () => {
   const SampleNextArrow = (prop) => {
     const { onClick, style, className } = prop;
     return (
-      <div onClick={onClick} className={`arrow ${className}`} style={{zIndex:200}}>
+      <div
+        onClick={onClick}
+        className={`arrow ${className}`}
+        style={{ zIndex: 200 }}
+      >
         <AiOutlineArrowRight
           className="arrows"
           style={{
@@ -40,7 +44,7 @@ const Carousel = () => {
         style={{ zIndex: 100 }}
       >
         <AiOutlineArrowLeft
-          className="arrows"
+          className="arrows "
           style={{
             display: "block",
             borderRadius: "150px",
@@ -59,7 +63,7 @@ const Carousel = () => {
     dots: false,
     infinite: true,
     autoplaySpeed: 2000,
-    autoplay: false,
+    autoplay: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
@@ -74,29 +78,29 @@ const Carousel = () => {
           return (
             <div
               key={idx}
-              className=" w-96 bg-linear-to-r from-[#c3ba06] via-[#efff8a] to-yellow-600 -z-50"
+              className="px-15 bg-linear-to-r from-[#c3ba06] via-[#efff8a] to-yellow-600 -z-50"
             >
-              <div className="flex gap-10 justify-center h-130 items-center px-4">
-                <div className="space-y-6">
-                  <h3 className="text-red-900 font-semibold font-sans text-sm capitalize">
+              <div className="grid grid-cols-1 gap-14 sm:1 mb-18 md:mb-6 md:grid-cols-2 md:gap-15 md:justify-center h-130 md:items-center md:px-8">
+                <div className="md:space-y-6 space-y-4 grid md:grid-cols-1 text-center mt-5">
+                  <h3 className="text-red-900 font-semibold font-sans text-sm md:text-lg capitalize">
                     make your world beautifull with the best makeups in the
                     world
                   </h3>
-                  <h1 className="text-4xl font-bold uppercase line-clamp-3 md:w-125 text-white">
+                  <h1 className="md:text-6xl text-4xl font-bold uppercase line-clamp-3 md:w-125 text-white">
                     {item.title}
                   </h1>
-                  <p className="md:w-125 line-clamp-3 text-gray-900 pr-7">
+                  <p className="md:w-125 text-sm md:text-xl line-clamp-3 text-gray-900 md:pr-7">
                     {item.description}
                   </p>
-                  <button className="bg-linear-to-r from-green-300 to-blue-300 text-black px-3 py-2 rounded-md cursor-pointer mt-2 font-semibold">
+                  <button className="bg-red-500 max-w-fit mx-auto text-white px-3 py-2 rounded-md cursor-pointer md:mt-2 font-semibold hover:scale-105 hover:black hover:bg-black ">
                     show now
                   </button>
                 </div>
-                <div className="">
+                <div className="mx-auto ">
                   <img
                     src={item.images}
                     alt=""
-                    className=" rounded-full w-120 hover:scale-105 transition-all shadow-2xl shadow-red-500  "
+                    className=" rounded-full w-70 md:w-110 hover:scale-105 transition-all shadow-xl shadow-red-700  "
                   />
                 </div>
               </div>

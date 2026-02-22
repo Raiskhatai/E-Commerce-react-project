@@ -18,9 +18,12 @@ const Navbar = ({ location, getLocation }) => {
     setDropDown(!DropDown);
   };
   return (
-    <div className="bg-white p-3 shadow-2xl capitalize">
-      <div className="max-w-6xl mx-auto font-semibold items-center flex justify-between ">
-        <div className="navleft flex gap-7 items-center">
+    <div className="bg-white p-3 shadow-xl capitalize">
+      <div
+        className="max-w-6xl mx-auto font-semibold items-center flex gap-5 flex-col
+      md:flex-row justify-between "
+      >
+        <div className="navleft flex flex-col md:flex-row gap-7 items-center">
           {/* logo section  */}
           <Link to={"/"}>
             <h1 className="text-3xl">
@@ -58,8 +61,8 @@ const Navbar = ({ location, getLocation }) => {
           )}
         </div>
         {/* menu section  */}
-        <nav className="flex gap-7 items-center">
-          <ul className="flex gap-7 items-center font-semibold text-xl">
+        <nav className="flex flex-col md:flex-row gap-3 md:gap-9 items-center justify-between">
+          <ul className="md:flex-row flex flex-col gap-4 md:gap-9 items-center font-semibold text-xl">
             <NavLink
               to={"/"}
               className={({ isActive }) =>
@@ -103,7 +106,7 @@ const Navbar = ({ location, getLocation }) => {
           <header>
             {/* Show the sign-in and sign-up buttons when the user is signed out */}
             <SignedOut>
-              <SignInButton className="bg-red-500 font-semibold capitalize text-white cursor-pointer px-2 py-1 " />
+              <SignInButton className="bg-red-500 rounded-2xl py-2 font-semibold capitalize text-white cursor-pointer px-4  " />
               {/* <SignUpButton /> */}
             </SignedOut>
             {/* Show the user button when the user is signed in */}
