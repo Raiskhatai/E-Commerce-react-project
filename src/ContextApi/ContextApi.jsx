@@ -19,17 +19,20 @@ const ContextApi = ({ children }) => {
   // end-- data context
 
   let chooseCateogery = (data, val) => {
-    return data.map((item) => item[`${val}`]);
+    const category = data.map((item) => item[`${val}`]);
+    return ["all", ...new Set(category)];
   };
 
-  const category = chooseCateogery(Data, "category");
-  const pureCategory = [...new Set(category)];
+  const pureCategory = chooseCateogery(Data, "category");
+  const brandCategory = chooseCateogery(Data, "brand");
 
   // end-- options
 
   return (
     <div>
-      <Context.Provider value={{ fetchData, Data, setData, pureCategory }}>
+      <Context.Provider
+        value={{ fetchData, Data, setData, pureCategory, brandCategory }}
+      >
         {children}
       </Context.Provider>
     </div>
