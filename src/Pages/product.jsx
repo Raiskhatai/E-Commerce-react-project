@@ -2,6 +2,7 @@ import Cateogery from "../Components/Cateogery";
 import { useEffect, useState } from "react";
 import { useDataContext } from "../ContextApi/ContextApi";
 import { FiShoppingCart } from "react-icons/fi";
+import Pagination from "../Components/Pagination";
 
 const Product = () => {
   const { Data, fetchData } = useDataContext();
@@ -9,13 +10,20 @@ const Product = () => {
   const [cateogery_check, setcateogery_check] = useState("all");
   const [brand, setbrand] = useState("all");
   const [price_range, setprice_range] = useState([0, 5000]);
+  const [page, setpage] = useState(1);
+
+  const handlePage = (currentpage) => {
+    setpage(currentpage);
+  };
 
   const handleCategory = (e) => {
     setcateogery_check(e.target.value);
+    setpage(1);
   };
 
   const handleBrand = (e) => {
     setbrand(e.target.value);
+    setpage(1);
   };
 
   const filterData = Data.filter((item) => {
@@ -28,6 +36,8 @@ const Product = () => {
     );
   });
 
+  const dynamic = Math.ceil(filterData.length / 9);
+
   console.log(brand);
 
   useEffect(() => {
@@ -36,54 +46,64 @@ const Product = () => {
   }, []);
 
   return (
-    <div className="grid grid-cols-9 w-300  mx-auto overflow-x-hidden ">
-      <Cateogery
-        search={search}
-        setsearch={setsearch}
-        cateogery_check={cateogery_check}
-        setcateogery_check={setcateogery_check}
-        brand={brand}
-        setbrand={setbrand}
-        price_range={price_range}
-        setprice_range={setprice_range}
-        handleCategory={handleCategory}
-        handleBrand={handleBrand}
-      />
-      <div className="  col-span-1 sm:col-span-2 lg:col-span-5  p-10 border-l border-l-gray-300  pt-15">
-        {Data.length > 0 ? (
-          <div className=" grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-3 gap-5  lg:gap-20">
-            {filterData.map((item, idx) => {
-              return (
-                <div
-                  className=" shadow-lg flex justify-between flex-col gap-2 items-center hover:scale-105 transition-all cursor-pointer  hover:shadow-gray-500 w-50 rounded-3xl"
-                  key={idx}
-                >
-                  <img src={item.images} alt="" className="bg-cover w-30 " />
-                  <p className="text-center font-bold">{item.title}</p>
-                  <p className="text-center font-bold">{item.brand}</p>
-                  <p className="text-center font-bold">${item.price}</p>
-                  <button className="flex items-center bg-red-500 text-white rounded-md  hover:scale-105 mb-2 cursor-pointer font-semibold py-2 px-3 capitalize ">
-                    <FiShoppingCart className=" mr-3 text-xl " />
-                    <h1 className="text-sm">add to cart</h1>
-                  </button>
-                </div>
-              );
-            })}
-          </div>
-        ) : (
-          <div className="flex items-center justify-center">
-            <video
-              src={"src/assets/video/loading-4.mp4"}
-              autoPlay
-              muted
-              loop
-              playsInline
-              style={{ width: "300px" }}
-            ></video>
-          </div>
-        )}
+    <>
+      <div className="grid grid-cols-9 w-300  mx-auto overflow-x-hidden ">
+        <Cateogery
+          search={search}
+          setsearch={setsearch}
+          cateogery_check={cateogery_check}
+          setcateogery_check={setcateogery_check}
+          brand={brand}
+          setbrand={setbrand}
+          price_range={price_range}
+          setprice_range={setprice_range}
+          handleCategory={handleCategory}
+          handleBrand={handleBrand}
+        />
+        <div className="  col-span-1 sm:col-span-2 lg:col-span-5  p-10 border-l border-l-gray-300  pt-15">
+          {Data.length > 0 ? (
+            <div className=" grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-3 gap-5  lg:gap-20">
+              {filterData.slice(page * 9 - 9, page * 9).map((item, idx) => {
+                return (
+                  <div
+                    className=" shadow-lg flex justify-between flex-col gap-2 items-center hover:scale-105 transition-all cursor-pointer  hover:shadow-gray-500 w-50 rounded-3xl"
+                    key={idx}
+                  >
+                    <img src={item.images} alt="" className="bg-cover w-30 " />
+                    <p className="text-center font-bold">{item.title}</p>
+                    <p className="text-center font-bold">{item.brand}</p>
+                    <p className="text-center font-bold">${item.price}</p>
+                    <button className="flex items-center bg-red-500 text-white rounded-md  hover:scale-105 mb-2 cursor-pointer font-semibold py-2 px-3 capitalize ">
+                      <FiShoppingCart className=" mr-3 text-xl " />
+                      <h1 className="text-sm">add to cart</h1>
+                    </button>
+                  </div>
+                );
+              })}
+            </div>
+          ) : (
+            <div className="flex items-center justify-center">
+              <video
+                src={"src/assets/video/loading-4.mp4"}
+                autoPlay
+                muted
+                loop
+                playsInline
+                style={{ width: "300px" }}
+              ></video>
+            </div>
+          )}
+        </div>
       </div>
-    </div>
+      <div className="w-full p-5">
+        <Pagination
+          page={page}
+          handlePage={handlePage}
+          dynamic={dynamic}
+          setpage={setpage}
+        />
+      </div>
+    </>
   );
 };
 

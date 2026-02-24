@@ -20,10 +20,10 @@ const Navbar = ({ location, getLocation }) => {
   return (
     <div className="bg-white p-3 shadow-xl capitalize">
       <div
-        className="max-w-6xl mx-auto font-semibold items-center flex gap-5 flex-col
+        className="max-w-6xl mx-auto font-semibold items-center flex gap-3 flex-col
       md:flex-row justify-between "
       >
-        <div className="navleft flex flex-col md:flex-row gap-7 items-center">
+        <div className="navleft flex flex-col md:flex-row gap-5 items-center">
           {/* logo section  */}
           <Link to={"/"}>
             <h1 className="text-3xl">
@@ -61,8 +61,8 @@ const Navbar = ({ location, getLocation }) => {
           )}
         </div>
         {/* menu section  */}
-        <nav className="flex flex-col md:flex-row gap-3 md:gap-9 items-center justify-between">
-          <ul className="md:flex-row flex flex-col gap-4 md:gap-9 items-center font-semibold text-xl">
+        <nav className="flex flex-col md:flex-row gap-3 md:gap-5 items-center justify-between">
+          <ul className="md:flex-row flex flex-col gap-4 md:gap-5 items-center font-semibold text-l">
             <NavLink
               to={"/"}
               className={({ isActive }) =>
@@ -106,7 +106,7 @@ const Navbar = ({ location, getLocation }) => {
           <header>
             {/* Show the sign-in and sign-up buttons when the user is signed out */}
             <SignedOut>
-              <SignInButton className="bg-red-500 rounded-2xl py-2 font-semibold capitalize text-white cursor-pointer px-4  " />
+              <SignInButton className="bg-red-500 rounded-xl py-2 font-semibold capitalize text-white cursor-pointer px-3  " />
               {/* <SignUpButton /> */}
             </SignedOut>
             {/* Show the user button when the user is signed in */}
