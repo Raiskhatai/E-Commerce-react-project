@@ -26,8 +26,8 @@ const Navbar = ({ location, getLocation }) => {
         <div className="navleft flex flex-col md:flex-row gap-5 items-center">
           {/* logo section  */}
           <Link to={"/"}>
-            <h1 className="text-3xl">
-              <span className="text-red-600">R</span>ais
+            <h1 className="text-3xl ">
+              <span className="text-red-600">p</span>ratham
             </h1>
           </Link>
           <div className="flex gap-2 items-center">

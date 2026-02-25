@@ -15,7 +15,7 @@ const Footer = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-15 ">
         <div className="flex flex-col justify-between gap-3 text-sm items-center md:items-start">
           <h1 className="text-red-600 text-2xl font-semibold capitalize ">
-            rais
+            pratham
           </h1>
           <p className="capitalize">
             make your world beautiful with best products.
@@ -79,7 +79,7 @@ const Footer = () => {
       </div>
       <div className="flex border-t-2 border-white mt-5 pt-5 justify-center gap-2 items-center capitalize">
         <FaRegCopyright /> {date}
-        <span className="text-red-500 font-bold text-xl">rais</span> all rights
+        <span className="text-red-500 font-bold text-xl">pratham's</span> all rights
         reserved
       </div>
     </div>
