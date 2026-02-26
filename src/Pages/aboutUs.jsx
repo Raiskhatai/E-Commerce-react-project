@@ -1,9 +1,10 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const AboutUs = () => {
   return (
-    <div className="px-25 py-5 text-justify">
-       <h1  className="text-red-500 text-xl my-5 "> About Us</h1>
+    <div className="px-25 py-5 text-justify w-full">
+      <h1 className="text-red-500 text-xl my-5 "> About Us</h1>
       <p>
         {" "}
         Welcome to [Company Name], a professionally managed e-commerce platform
@@ -31,14 +32,14 @@ const AboutUs = () => {
         Integrity & Transparency – Honest communication and ethical practices
         form the foundation of our business. Innovation
       </p>
-      <h1  className="text-red-500 text-xl my-5">Our Mission</h1>
+      <h1 className="text-red-500 text-xl my-5">Our Mission</h1>
       <p>
         Our mission is to provide customers with: Premium quality products
         Transparent pricing Secure and convenient payment options Timely and
         reliable delivery services Efficient customer support We aim to build
         long-term relationships based on trust, reliability, and satisfaction.
       </p>
-      <h1  className="text-red-500 text-xl my-5">Our Commitment</h1>
+      <h1 className="text-red-500 text-xl my-5">Our Commitment</h1>
       <p>
         {" "}
         Customer satisfaction is at the core of our business operations. We
@@ -47,20 +48,22 @@ const AboutUs = () => {
         dedicated to maintaining transparency, professionalism, and excellence
         in every interaction.
       </p>
-      <h1  className="text-red-500 text-xl my-5">Our Vision</h1>
+      <h1 className="text-red-500 text-xl my-5">Our Vision</h1>
       <p>
         To become a leading e-commerce platform recognized for integrity,
         innovation, and customer-centric services while expanding our reach
         across diverse markets.
       </p>
-      <h1  className="text-red-500 text-xl my-5">Contact Information</h1>
+      <h1 className="text-red-500 text-xl my-5">Contact Information</h1>
       <p>
         {" "}
         For any inquiries, support, or feedback, please feel free to reach out
         to our customer service team. We are always here to assist you.
       </p>
-
-         </div>
+      <button className=" text-white bg-red-500 px-3 py-2 hover:scale-105 cursor-pointer my-5 w-fit block rounded-l capitalize font-semibold text-xl m-auto ">
+        <Link to={"/product"}> click</Link>
+      </button>
+    </div>
   );
 };
 

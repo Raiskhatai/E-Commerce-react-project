@@ -42,6 +42,7 @@ const Product = () => {
 
   useEffect(() => {
     fetchData();
+    window.scroll(0, 0);
     return () => {};
   }, []);
 
