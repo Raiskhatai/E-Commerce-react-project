@@ -1,8 +1,8 @@
 import Cateogery from "../Components/Cateogery";
 import { useEffect, useState } from "react";
 import { useDataContext } from "../ContextApi/ContextApi";
-import { FiShoppingCart } from "react-icons/fi";
 import Pagination from "../Components/Pagination";
+import ProductCard from "../Components/ProductCard";
 
 const Product = () => {
   const { Data, fetchData } = useDataContext();
@@ -38,8 +38,6 @@ const Product = () => {
 
   const dynamic = Math.ceil(filterData.length / 9);
 
-  console.log(brand);
-
   useEffect(() => {
     fetchData();
     window.scroll(0, 0);
@@ -65,21 +63,7 @@ const Product = () => {
           {Data.length > 0 ? (
             <div className=" grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-3 gap-5  lg:gap-20">
               {filterData.slice(page * 9 - 9, page * 9).map((item, idx) => {
-                return (
-                  <div
-                    className=" shadow-lg flex justify-between flex-col gap-2 items-center hover:scale-105 transition-all cursor-pointer  hover:shadow-gray-500 w-50 rounded-3xl"
-                    key={idx}
-                  >
-                    <img src={item.images} alt="" className="bg-cover w-30 " />
-                    <p className="text-center font-bold">{item.title}</p>
-                    <p className="text-center font-bold">{item.brand}</p>
-                    <p className="text-center font-bold">${item.price}</p>
-                    <button className="flex items-center bg-red-500 text-white rounded-md  hover:scale-105 mb-2 cursor-pointer font-semibold py-2 px-3 capitalize ">
-                      <FiShoppingCart className=" mr-3 text-xl " />
-                      <h1 className="text-sm">add to cart</h1>
-                    </button>
-                  </div>
-                );
+                return <ProductCard item={item} idx={idx} />;
               })}
             </div>
           ) : (

@@ -32,6 +32,7 @@ const Pagination = ({ page, handlePage, dynamic, setpage }) => {
       {getPages(page, dynamic).map((item, idx) => {
         return (
           <span
+          key={idx}
             className={`mx-1 ${item === page ? "text-red-500 text-2xl" : "text-black"} cursor-pointer`}
             onClick={() => (typeof item == "number" ? handlePage(item) : null)}
           >

@@ -8,6 +8,7 @@ import Cart from "./Pages/cart";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Footer from "./Components/Footer";
+import SingleProduct from "./Components/SingleProduct";
 
 const App = () => {
   const [location, setlocation] = useState();
@@ -29,7 +30,7 @@ const App = () => {
   };
 
   useEffect(() => {
-    // getLocation();
+    getLocation();
   }, []);
 
   return (
@@ -39,6 +40,7 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<AboutUs />} />
         <Route path="/product" element={<Product />} />
+        <Route path="/product/:id" element={<SingleProduct />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/cart" element={<Cart />} />
       </Routes>
