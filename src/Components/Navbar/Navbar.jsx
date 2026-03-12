@@ -11,12 +11,17 @@ import { CgClose } from "react-icons/cg";
 import { FaCaretDown } from "react-icons/fa";
 import { IoCartOutline } from "react-icons/io5";
 import { Link, NavLink } from "react-router-dom";
+import { useCartValue } from "../../ContextApi/CartApi";
+// import { useCartValue } from "../ContextApi/CartApi";
 
 const Navbar = ({ location, getLocation }) => {
   const [DropDown, setDropDown] = useState(false);
   const toggle = () => {
     setDropDown(!DropDown);
   };
+
+  const { CartCounter } = useCartValue();
+
   return (
     <div className="bg-white p-3 shadow-xl capitalize">
       <div
@@ -99,7 +104,7 @@ const Navbar = ({ location, getLocation }) => {
           <Link to={"/cart"} className=" relative  ">
             <IoCartOutline className="h-7 w-7" />{" "}
             <span className="bg-red-500 px-2 rounded-full absolute -top-3 -right-3 text-white">
-              0
+              {CartCounter.length}
             </span>
           </Link>
 

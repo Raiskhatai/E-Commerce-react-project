@@ -4,10 +4,12 @@ import { useParams } from "react-router-dom";
 import Breadcrums from "./Breadcrums";
 import Cateogery from "./Cateogery";
 import { FaCartShopping } from "react-icons/fa6";
+import { useCartValue } from "../ContextApi/CartApi";
 
 const SingleProduct = () => {
   const param = useParams();
   const [singleitem, setsingleitem] = useState();
+
 
   const getsingleproduct = async () => {
     try {
@@ -62,7 +64,7 @@ const SingleProduct = () => {
                   </span>
                 </p>
                 <p>{singleitem.description}</p>
-                <div className="flex items-center gap-4 ">
+                <div className="flex items-center gap-4 py-5">
                   <label
                     htmlFor=""
                     className="text-sm font-medium text-gray-700 capitalize "
@@ -77,9 +79,9 @@ const SingleProduct = () => {
                     value="1"
                   />
                 </div>
-                <div className=" flex gap-4 mt-4 ">
-                  <button className="px-6 flex gap-2 py-2 text-lg bg-red-500 text-white rounded-md">
-                    <FaCartShopping className="w-6 h-6" />
+                <div className=" flex gap-4 ">
+                  <button className="px-4 cursor-pointer flex gap-2 py-2 text-md bg-red-500 text-white rounded-md">
+                    <FaCartShopping className="w-5 h-5" />
                     Add to Cart
                   </button>{" "}
                 </div>
