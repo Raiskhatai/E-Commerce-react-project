@@ -21,7 +21,7 @@ const ProductCard = ({ item, idx }) => {
       />
       <p className="text-center font-bold">{item.title}</p>
       <p className="text-center font-bold">{item.brand}</p>
-      <p className="text-center font-bold">${item.price}</p>
+      <p className="text-center font-bold">${Math.floor(item.price)}</p>
       <button
         onClick={() => {
           cartIncrease(item);

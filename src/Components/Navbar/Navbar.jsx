@@ -4,6 +4,7 @@ import {
   SignInButton,
   SignUpButton,
   UserButton,
+  useUser,
 } from "@clerk/clerk-react";
 import { MapPin } from "lucide-react";
 import React, { useState } from "react";
