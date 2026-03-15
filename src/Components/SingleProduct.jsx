@@ -9,7 +9,8 @@ import { useCartValue } from "../ContextApi/CartApi";
 const SingleProduct = () => {
   const param = useParams();
   const [singleitem, setsingleitem] = useState();
-
+  const { cartIncrease, CartCounter } = useCartValue();
+  const qty = CartCounter[0]?.quantity;
 
   const getsingleproduct = async () => {
     try {
@@ -36,18 +37,18 @@ const SingleProduct = () => {
   return (
     <>
       {singleitem ? (
-        <div className="px-4 pb-4 md:px-0">
+        <div className="px-4 pb-4 md:px-10">
           <Breadcrums title={singleitem.title} />
-          <div className="max-w-6xl mx-auto md:6 grid grid-cols-2 gap-10">
-            <div className="w-full">
+          <div className="max-w-6xl mx-auto  grid grid-cols-1 md:grid-cols-2 gap-10">
+            <div className="w-full flex justify-center items-center">
               <img
                 src={singleitem.images}
                 alt={singleitem.title}
-                className="rounded-2xl object-cover  w-100 h-100 "
+                className="rounded-2xl object-cover   w-100 h-100 "
               />
             </div>
             <div className="flex flex-col gap-6">
-              <h1 className="md:text-3xl font-bold text-gray-700">
+              <h1 className="md:text-3xl text-xl text-center md:text-left font-bold text-gray-700">
                 {singleitem.title}
               </h1>
               <div className="text-gray-700">
@@ -76,11 +77,16 @@ const SingleProduct = () => {
                     type="number"
                     min={1}
                     className="border border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-500 w-20 pl-2 rounded-lg px-3 py-1"
-                    value="1"
+                    value={qty}
                   />
                 </div>
                 <div className=" flex gap-4 ">
-                  <button className="px-4 cursor-pointer flex gap-2 py-2 text-md bg-red-500 text-white rounded-md">
+                  <button
+                    onClick={() => {
+                      cartIncrease(singleitem);
+                    }}
+                    className="px-4 cursor-pointer flex gap-2 py-2 text-md bg-red-500 text-white rounded-md"
+                  >
                     <FaCartShopping className="w-5 h-5" />
                     Add to Cart
                   </button>{" "}

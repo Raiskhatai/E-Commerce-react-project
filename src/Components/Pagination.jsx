@@ -3,6 +3,7 @@ import React from "react";
 const Pagination = ({ page, handlePage, dynamic, setpage }) => {
   const pages = [];
   const getPages = (current, total) => {
+    window.scrollTo(0,0)
     if (total <= 5) {
       for (let i = 1; i <= total; i++) {
         pages.push(i);

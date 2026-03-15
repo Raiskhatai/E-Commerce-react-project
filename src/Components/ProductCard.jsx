@@ -8,7 +8,7 @@ const ProductCard = ({ item, idx }) => {
 
   return (
     <div
-      className={`shadow-lg flex justify-between flex-col gap-2 items-center hover:scale-105 transition-all hover:shadow-gray-500 w-50 rounded-3xl`}
+      className={`shadow-lg flex justify-between flex-col gap-2 items-center hover:scale-105 transition-all hover:shadow-gray-500 xl:w-55 w-full p-5 rounded-3xl`}
       key={idx}
     >
       <img

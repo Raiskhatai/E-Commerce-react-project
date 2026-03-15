@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import { useDataContext } from "../ContextApi/ContextApi";
 import Pagination from "../Components/Pagination";
 import ProductCard from "../Components/ProductCard";
+import MobileFilter from "../Components/MobileFilter";
+import loadingvid from "../assets/video/loading-2.mp4";
 
 const Product = () => {
   const { Data, fetchData } = useDataContext();
@@ -11,19 +13,25 @@ const Product = () => {
   const [brand, setbrand] = useState("all");
   const [price_range, setprice_range] = useState([0, 5000]);
   const [page, setpage] = useState(1);
+  const [openFilter, setopenFilter] = useState(false);
 
   const handlePage = (currentpage) => {
     setpage(currentpage);
+    window.scrollTo(0, 0);
   };
 
   const handleCategory = (e) => {
     setcateogery_check(e.target.value);
     setpage(1);
+    setopenFilter(false);
+    window.scrollTo(0, 0);
   };
 
   const handleBrand = (e) => {
     setbrand(e.target.value);
     setpage(1);
+    setopenFilter(false);
+    window.scrollTo(0, 0);
   };
 
   const filterData = Data.filter((item) => {
@@ -46,7 +54,21 @@ const Product = () => {
 
   return (
     <>
-      <div className="grid grid-cols-9 w-300  mx-auto overflow-x-hidden ">
+      <div className="grid md:grid-cols-3 grid-cols-1  md:px-15 lg:px-35  mx-auto overflow-x-hidden ">
+        <MobileFilter
+          openFilter={openFilter}
+          setopenFilter={setopenFilter}
+          search={search}
+          setsearch={setsearch}
+          cateogery_check={cateogery_check}
+          setcateogery_check={setcateogery_check}
+          brand={brand}
+          setbrand={setbrand}
+          price_range={price_range}
+          setprice_range={setprice_range}
+          handleCategory={handleCategory}
+          handleBrand={handleBrand}
+        />
         <Cateogery
           search={search}
           setsearch={setsearch}
@@ -59,22 +81,22 @@ const Product = () => {
           handleCategory={handleCategory}
           handleBrand={handleBrand}
         />
-        <div className="  col-span-1 sm:col-span-2 lg:col-span-5  p-10 border-l border-l-gray-300  pt-15">
-          {Data.length > 0 ? (
-            <div className=" grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-3 gap-5  lg:gap-20">
+        <div className=" p-3 mx-auto md:border-l border-none  md:col-span-2 col-span-1 border-l-gray-300 gap-10  pt-15">
+          {filterData.length > 0 ? (
+            <div className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 xl:grid-cols-3    ">
               {filterData.slice(page * 9 - 9, page * 9).map((item, idx) => {
-                return <ProductCard item={item} idx={idx} />;
+                return <ProductCard item={item} idx={idx} key={idx} />;
               })}
             </div>
           ) : (
             <div className="flex items-center justify-center">
               <video
-                src={"src/assets/video/loading-4.mp4"}
+                src={loadingvid}
                 autoPlay
                 muted
                 loop
-                playsInline
-                style={{ width: "300px" }}
+                // playsInline
+                style={{ width: "600px" }}
               ></video>
             </div>
           )}

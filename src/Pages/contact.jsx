@@ -5,19 +5,19 @@ import { MdAddReaction, MdEmail } from "react-icons/md";
 
 const Contact = () => {
   return (
-    <div className=" px-15 bg-linear-to-r from-[#0a0c41] via-[#3b3164] to-[#0d023a] -z-50 w-full h-136 flex items-center justify-center p-15">
-      <div className="w-202  h-full bg-black/30 rounded-2xl p-15 relative text-white  ">
+    <div className=" px-15 bg-linear-to-r from-[#0a0c41] via-[#3b3164] to-[#0d023a] -z-50 w-full  flex items-center justify-center p-15">
+      <div className=" md:flex md:flex-col md:items-center  bg-black/30 rounded-2xl p-5 md:p-15 relative text-white  ">
         <h1 className="text-center font-bold text-2xl">
           Get in touch with <span className="text-red-500">Pratham</span>
         </h1>
-        <div className="flex gap-10">
-          <div className="w-1/2 p-2">
+        <div className="flex flex-col md:flex-row  items-center gap-0">
+          <div className="md:w-1/2 w-full flex flex-col items-center md:items-start p-2">
             <h1 className="font-bold text-xl capitalize my-2">contact info</h1>
-            <p className="text-[13px] text-white/40 ">
+            <p className="text-[13px] text-white/40 text-center md:text-start ">
               have a question or need support ? were here to help you with any
               item{" "}
             </p>
-            <div className="mt-5 flex flex-col gap-2 ">
+            <div className="mt-5 flex md:flex-col flex-row  items-center md:items-start gap-2 ">
               <p className="text-red-500 flex gap-2">
                 {" "}
                 <FaMapPin />

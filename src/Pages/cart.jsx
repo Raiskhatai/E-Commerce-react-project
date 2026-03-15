@@ -11,17 +11,21 @@ const Cart = ({ location, getLocation }) => {
   console.log(CartCounter);
 
   const total = CartCounter.reduce((a, v) => {
-    return a + Math.floor(v.price);
+    return a + Math.floor(v.price) * v.quantity;
   }, 0);
+
 
   const { user } = useUser();
 
   const navigate = useNavigate();
 
+  console.log(CartCounter[0])
+
+
   return (
     <>
       {CartCounter.length > 0 ? (
-        <div className="px-25 py-7 w-full">
+        <div className="px-25 py-7 w-full ">
           <div className=" w-full">
             <h1 className="px-15 text-xl font-semibold capitalize ">
               my cart ({CartCounter.length})
@@ -29,15 +33,16 @@ const Cart = ({ location, getLocation }) => {
             <div className="">
               {CartCounter.map((item, idx) => {
                 return (
-                  <div className="bg-gray-200 rounded-xl w-full h-25 flex justify-between p-3 items-center mt-5 ">
-                    <div className="h-25 w-25 flex  justify-between p-4 gap-3 ">
+                  <div key={idx} className="bg-gray-200 rounded-xl   grid grid-cols-2 md:grid-cols-3 justify-between p-3 items-center h-fit
+                   mt-5 ">
+                    <div className="md:h-25 md:w-55 h-30 w-60 bg-center justify-center items-center  grid grid-cols-2  gap-3 ">
                       <img
                         src={item.images}
-                        className="w-full object-cover bg-cover bg-no-repeat h-full bg-center bg-white   "
+                        className="w-full object-cover  bg-cover bg-no-repeat h-full bg-center bg-white rounded-lg "
                         alt=""
                       />
                       <div>
-                        <h1 className="w-55 text-l font-semibold line-clamp-1">
+                        <h1 className="md:w-55 w-30 text-l font-semibold line-clamp-1">
                           {item.title}
                         </h1>
                         <h1 className="w-55 text-l font-semibold line-clamp-1">
@@ -48,7 +53,7 @@ const Cart = ({ location, getLocation }) => {
                         </h1>
                       </div>
                     </div>
-                    <div className="flex justify-center items-center font-semibold text-l bg-red-500 text-white px-3 py-1 gap-2 cursor-pointer  ">
+                    <div className="flex justify-self-center items-center  w-fit md:w-fit font-semibold text-l bg-red-500 text-white px-3 py-1 gap-2 cursor-pointer  ">
                       <span
                         onClick={() =>
                           updateQuantity(CartCounter, item.id, "decrease")
@@ -69,7 +74,7 @@ const Cart = ({ location, getLocation }) => {
                       onClick={() => {
                         deleteItem(item.id);
                       }}
-                      className="text-red-500 hover:bg-white p-3 rounded-full font-bolder text-2xl mr-15 cursor-pointer "
+                      className="text-red-500 hover:bg-white p-3 rounded-full font-bolder text-2xl  cursor-pointer md:mx-auto flex justify-end "
                     >
                       <FaRegTrashAlt />
                     </div>
@@ -79,8 +84,8 @@ const Cart = ({ location, getLocation }) => {
             </div>
           </div>
 
-          <div className="mt-5 flex gap-10 ">
-            <div className="bg-gray-200 p-5  rounded-2xl ">
+          <div className="mt-5 flex flex-col lg:flex-row gap-10 ">
+            <div className="bg-gray-200 p-5 w-full  rounded-2xl ">
               <h1 className="font-bold text-xl mb-5">Delivery Info</h1>
               <div className="flex flex-col capitalize ">
                 <label htmlFor="" className="font-semibold mt-3 mb-2">
@@ -113,7 +118,7 @@ const Cart = ({ location, getLocation }) => {
                   </label>
                   <input
                     type="text"
-                    className="bg-white border placeholder:capitalize p-1 border-gray-400 px-2 "
+                    className="bg-white border w-full placeholder:capitalize p-1 border-gray-400 px-2 "
                     placeholder="enter your state"
                     value={location?.state}
                   />
@@ -124,32 +129,32 @@ const Cart = ({ location, getLocation }) => {
                   </label>
                   <input
                     type="text"
-                    className="bg-white border placeholder:capitalize p-1 border-gray-400 px-2 "
+                    className="bg-white border w-full placeholder:capitalize p-1 border-gray-400 px-2 "
                     placeholder="enter your postCode"
                     value={location?.postcode}
                   />
                 </div>
               </div>
 
-              <div className="flex flex-row mt-3 mb-2  justify-between items-center  capitalize ">
+              <div className="flex flex-row mt-3 mb-2 gap-5 justify-between items-center  capitalize ">
                 <div className=" flex flex-col ">
                   <label htmlFor="" className="font-semibold mt-3 mb-2">
                     country
                   </label>
                   <input
                     type="text"
-                    className="bg-white border placeholder:capitalize p-1 border-gray-400 px-2 "
+                    className="bg-white border w-full placeholder:capitalize p-1 border-gray-400 px-2 "
                     placeholder="enter your country"
                     value={location?.country}
                   />
                 </div>
-                <div className=" flex flex-col ">
+                <div className=" flex flex-col  ">
                   <label htmlFor="" className="font-semibold mt-3 mb-2">
                     phone no
                   </label>
                   <input
                     type="text"
-                    className="bg-white border placeholder:capitalize p-1 border-gray-400 px-2 "
+                    className="bg-white w-full border placeholder:capitalize p-1 border-gray-400 px-2 "
                     placeholder="enter your number"
                   />
                 </div>

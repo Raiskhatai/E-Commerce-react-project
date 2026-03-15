@@ -9,9 +9,12 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Footer from "./Components/Footer";
 import SingleProduct from "./Components/SingleProduct";
+import CategoryProduct from "./Pages/CategoryProduct";
+import { useCartValue } from "./ContextApi/CartApi";
 
 const App = () => {
   const [location, setlocation] = useState();
+  const { CartCounter, setCartCounter } = useCartValue();
   const getLocation = () => {
     navigator.geolocation.getCurrentPosition(async function (pos) {
       const { latitude, longitude } = pos.coords;
@@ -33,11 +36,27 @@ const App = () => {
     getLocation();
   }, []);
 
+  // load cart from local storage on initial rendor
+  useEffect(() => {
+    const storedCart = localStorage.getItem("cartItem");
+    if (storedCart) {
+      setCartCounter(JSON.parse(storedCart));
+    }
+    return () => {};
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("cartItem", JSON.stringify(CartCounter));
+
+    return () => {};
+  }, [CartCounter]);
+
   return (
     <div>
       <Navbar location={location} getLocation={getLocation} />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/category/:category" element={<CategoryProduct />} />
         <Route path="/about" element={<AboutUs />} />
         <Route path="/product" element={<Product />} />
         <Route path="/product/:id" element={<SingleProduct />} />

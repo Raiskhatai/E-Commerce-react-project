@@ -13,10 +13,13 @@ import { FaCaretDown } from "react-icons/fa";
 import { IoCartOutline } from "react-icons/io5";
 import { Link, NavLink } from "react-router-dom";
 import { useCartValue } from "../../ContextApi/CartApi";
+import { CiMenuBurger, CiMenuFries } from "react-icons/ci";
+import ResponsiveNav from "../ResponsiveNav";
 // import { useCartValue } from "../ContextApi/CartApi";
 
 const Navbar = ({ location, getLocation }) => {
   const [DropDown, setDropDown] = useState(false);
+  const [openNav, setopenNav] = useState(false);
   const toggle = () => {
     setDropDown(!DropDown);
   };
@@ -26,17 +29,17 @@ const Navbar = ({ location, getLocation }) => {
   return (
     <div className="bg-white p-3 shadow-xl capitalize">
       <div
-        className="max-w-6xl mx-auto font-semibold items-center flex gap-3 flex-col
-      md:flex-row justify-between "
+        className="max-w-6xl mx-auto font-semibold items-center flex gap-3 
+      flex-row justify-between "
       >
-        <div className="navleft flex flex-col md:flex-row gap-5 items-center">
+        <div className="navleft flex flex-row gap-5 items-center">
           {/* logo section  */}
           <Link to={"/"}>
             <h1 className="text-3xl ">
               <span className="text-red-600">p</span>ratham
             </h1>
           </Link>
-          <div className="flex gap-2 items-center">
+          <div className="md:flex hidden gap-2 items-center">
             <MapPin className="text-red-600" />
             {location ? (
               <div className="-space-y-2">
@@ -67,8 +70,8 @@ const Navbar = ({ location, getLocation }) => {
           )}
         </div>
         {/* menu section  */}
-        <nav className="flex flex-col md:flex-row gap-3 md:gap-5 items-center justify-between">
-          <ul className="md:flex-row flex flex-col gap-4 md:gap-5 items-center font-semibold text-l">
+        <nav className="flex flex-row gap-5 items-center justify-between">
+          <ul className="flex-row md:flex hidden   gap-5 items-center font-semibold text-l">
             <NavLink
               to={"/"}
               className={({ isActive }) =>
@@ -109,10 +112,10 @@ const Navbar = ({ location, getLocation }) => {
             </span>
           </Link>
 
-          <header>
+          <header className="hidden md:block">
             {/* Show the sign-in and sign-up buttons when the user is signed out */}
             <SignedOut>
-              <SignInButton className="bg-red-500 rounded-xl py-2 font-semibold capitalize text-white cursor-pointer px-3  " />
+              <SignInButton className="bg-red-500  rounded-xl py-2 font-semibold capitalize text-white cursor-pointer px-3  " />
               {/* <SignUpButton /> */}
             </SignedOut>
             {/* Show the user button when the user is signed in */}
@@ -120,8 +123,20 @@ const Navbar = ({ location, getLocation }) => {
               <UserButton />
             </SignedIn>
           </header>
+          {openNav ? (
+            <CiMenuFries
+              onClick={() => setopenNav(false)}
+              className=" h-7 w-7 cursor-pointer md:hidden"
+            />
+          ) : (
+            <CiMenuBurger
+              onClick={() => setopenNav(true)}
+              className=" h-7 w-7 cursor-pointer md:hidden"
+            />
+          )}
         </nav>
       </div>
+      <ResponsiveNav openNav={openNav} setopenNav={setopenNav} />
     </div>
   );
 };

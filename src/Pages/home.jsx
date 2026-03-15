@@ -6,7 +6,7 @@ import Policy from "../Components/Policy";
 
 const Home = () => {
   return (
-    <div className="">
+    <div className="overflow-x-hidden">
       <Carousel />
       <Options />
       <MidBgImg />

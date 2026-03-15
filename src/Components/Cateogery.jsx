@@ -15,7 +15,7 @@ const Cateogery = ({
 }) => {
   const { pureCategory, brandCategory } = useDataContext();
   return (
-    <div className=" h-fit col-start-2 col-span-2 mt-5 pb-5 bg-gray-100 pt-15 pl-5 ">
+    <div className=" hidden md:block h-fit w-full col-span-1 md:col-start-1 mt-5 pb-5 pr-5 bg-gray-100 pt-15 pl-5 ">
       <input
         type="text"
         placeholder="Search"
@@ -23,8 +23,9 @@ const Cateogery = ({
         onChange={(e) => {
           setsearch(e.target.value);
         }}
-        className=" outline-none border-2 border-black rounded-lg bg-white w-26 px-5 py-1 mb-6 lg:w-55 "
+        className=" outline-none border-2 border-black rounded-lg bg-white w-full px-5 py-1 mb-6  "
       />
+
       <h1 className="font-bold text-2xl mb-5">Cateogery</h1>
       {pureCategory.map((item, idx) => {
         return (
@@ -78,9 +79,17 @@ const Cateogery = ({
           }}
         />
       </div>
-        <button className="m-4 bg-red-500 text-white py-2 px-4 mx-auto rounded-lg capitalize cursor-pointer hover:scale-105 text-l font-semibold " onClick={()=>{
-          setbrand("all"),setcateogery_check("all"),setsearch(""),setprice_range([0,5000])
-        }}>reset</button>
+      <button
+        className="m-4 bg-red-500 text-white py-2 px-4 mx-auto rounded-lg capitalize cursor-pointer hover:scale-105 text-l font-semibold "
+        onClick={() => {
+          (setbrand("all"),
+            setcateogery_check("all"),
+            setsearch(""),
+            setprice_range([0, 5000]));
+        }}
+      >
+        reset
+      </button>
     </div>
   );
 };

@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState } from "react";
+import { toast } from "react-toastify";
 
 export const CartContext = createContext(null);
 
@@ -16,9 +17,11 @@ const CartApi = ({ children }) => {
           : product;
       });
       setCartCounter(updatedCart);
+      toast.success("product quantity increased");
     } else {
       // add new product with quantity 1
       setCartCounter([...CartCounter, { ...item, quantity: 1 }]);
+      toast.success("product is added succesfully");
     }
   };
 
@@ -29,8 +32,10 @@ const CartApi = ({ children }) => {
           let newUnit = item.quantity;
           if (action == "increase") {
             newUnit = newUnit + 1;
+            toast.success("quantity increase by 1");
           } else if (action == "decrease") {
             newUnit = newUnit - 1;
+            toast.success("quantity decreased by 1");
           }
           return newUnit > 0 ? { ...item, quantity: newUnit } : null;
         }
@@ -39,14 +44,21 @@ const CartApi = ({ children }) => {
     );
   };
 
-  const deleteItem=(productId)=>{
-      setCartCounter(CartCounter.filter(item=>item.id!==productId))
-  }
+  const deleteItem = (productId) => {
+    setCartCounter(CartCounter.filter((item) => item.id !== productId));
+    toast.success("product is remove from cart");
+  };
 
   return (
     <div>
       <CartContext.Provider
-        value={{ CartCounter, setCartCounter, cartIncrease, updateQuantity,deleteItem }}
+        value={{
+          CartCounter,
+          setCartCounter,
+          cartIncrease,
+          updateQuantity,
+          deleteItem,
+        }}
       >
         {children}
       </CartContext.Provider>

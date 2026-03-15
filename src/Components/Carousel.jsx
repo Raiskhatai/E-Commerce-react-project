@@ -80,19 +80,19 @@ const Carousel = () => {
               key={idx}
               className="px-15 bg-linear-to-r from-[#c3ba06] via-[#efff8a] to-yellow-600 -z-50"
             >
-              <div className="grid grid-cols-1 gap-14 sm:1 mb-18 md:mb-6 md:grid-cols-2 md:gap-15 md:justify-center h-130 md:items-center md:px-8">
-                <div className="md:space-y-6 space-y-4 grid md:grid-cols-1 text-center mt-5">
-                  <h3 className="text-red-900 font-semibold font-sans text-sm md:text-lg capitalize">
+              <div className="grid grid-cols-1 gap-14  mb-18 lg:mb-6 lg:grid-cols-2 lg:gap-15 lg:justify-center lg:h-130 h-full lg:items-center lg:px-8">
+                <div className="lg:space-y-6  space-y-4 grid lg:grid-cols-1 text-center mt-5">
+                  <h3 className="text-red-900 font-semibold font-sans text-sm lg:text-lg capitalize">
                     make your world beautifull with the best makeups in the
                     world
                   </h3>
-                  <h1 className="md:text-6xl text-4xl font-bold uppercase line-clamp-3 md:w-125 text-white">
+                  <h1 className="lg:text-6xl text-4xl font-bold uppercase line-clamp-3 lg:w-125 text-white">
                     {item.title}
                   </h1>
-                  <p className="md:w-125 text-sm md:text-xl line-clamp-3 text-gray-900 md:pr-7">
+                  <p className="lg:w-125 text-sm lg:text-xl line-clamp-3 text-gray-900 lg:pr-7">
                     {item.description}
                   </p>
-                  <button className="bg-red-500 max-w-fit mx-auto text-white px-3 py-2 rounded-md cursor-pointer md:mt-2 font-semibold hover:scale-105 hover:black hover:bg-black ">
+                  <button className="bg-red-500 max-w-fit mx-auto text-white px-3 py-2 rounded-md cursor-pointer lg:mt-2 font-semibold hover:scale-105 hover:black hover:bg-black ">
                     show now
                   </button>
                 </div>
@@ -100,8 +100,9 @@ const Carousel = () => {
                   <img
                     src={item.images}
                     alt=""
-                    className=" rounded-full w-70 md:w-110 hover:scale-105 transition-all shadow-xl shadow-red-700  "
+                    className=" rounded-full w-70 lg:w-110 hover:scale-105 transition-all shadow-xl shadow-red-700  "
                   />
+                  
                 </div>
               </div>
             </div>
